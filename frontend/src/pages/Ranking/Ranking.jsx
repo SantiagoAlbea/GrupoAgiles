@@ -44,7 +44,7 @@ if (localStorage.TorneoActual === undefined){
 
 //Crecion funcion que devuelve los usuarios y sus puntos del torneo de la champions
 function getAllRankings(){
-    axios.get(`http://127.0.0.1:3001/api/rankings/${localStorage.TorneoActual}`)
+    axios.get(`https://limitless-mesa-98870.herokuapp.com/api/rankings/${localStorage.TorneoActual}`)
     .then((response) => {
         const data = response.data;
         getRankings(data);
@@ -54,7 +54,7 @@ function getAllRankings(){
 
 //Obtengo nombres e ids de los torneos del usuario
 function getData(){
-    axios.get(`http://127.0.0.1:3001/api/allTorneos/${localStorage.userID}`)
+    axios.get(`https://limitless-mesa-98870.herokuapp.com/api/allTorneos/${localStorage.userID}`)
     .then((response) => {
         const data = response.data;
         getTorneos(data)

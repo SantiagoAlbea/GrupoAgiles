@@ -17,7 +17,7 @@ export default function Predicciones() {
 
   function getAllPredicts() {
     axios
-      .get(`http://127.0.0.1:3001/api/prediccionesPorPartido`)
+      .get(`https://limitless-mesa-98870.herokuapp.com/api/prediccionesPorPartido`)
       .then((response) => {
         const data = response.data;
         getPrediccion(data);
@@ -27,7 +27,7 @@ export default function Predicciones() {
 
   function getAllPartidos() {
     axios
-      .get(`http://127.0.0.1:3001/api/partidos`)
+      .get(`https://limitless-mesa-98870.herokuapp.com/api/partidos`)
       .then((response1) => {
         const dataMatchday = response1.data.filter((item) => item.Matchday);
         localStorage.Matchday = dataMatchday[0].Matchday;

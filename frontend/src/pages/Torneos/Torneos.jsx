@@ -56,7 +56,7 @@ export default function Torneos() {
     },[]);
     
     function getData(){
-        axios.get(`http://127.0.0.1:3001/api/torneos`)
+        axios.get(`https://limitless-mesa-98870.herokuapp.com/api/torneos`)
         .then((response) => {
             const data = response.data.filter((item => item.UsuarioCreador === Number(localStorage.userID)));
             getTorneosUser(data)
@@ -64,7 +64,7 @@ export default function Torneos() {
         .catch(() => console.log("error"));
     }
     function getTorneosUnidosA(){
-        axios.get(`http://127.0.0.1:3001/api/allTorneos/${localStorage.userID}`)
+        axios.get(`https://limitless-mesa-98870.herokuapp.com/api/allTorneos/${localStorage.userID}`)
         .then((response) => {
             const data = response.data;
             getTorneosUnidos(data)
@@ -72,7 +72,7 @@ export default function Torneos() {
         .catch(() => console.log("error"));
     }
     function getUsers(){
-        axios.get(`http://127.0.0.1:3001/api/usuarios`)
+        axios.get(`https://limitless-mesa-98870.herokuapp.com/api/usuarios`)
         .then((response) => {
             const data = response.data
             getUsuarios(data)
@@ -80,7 +80,7 @@ export default function Torneos() {
         .catch(() => console.log("error"));
     }
     function getTorneo(){
-        axios.get(`http://127.0.0.1:3001/api/torneos`)
+        axios.get(`https://limitless-mesa-98870.herokuapp.com/api/torneos`)
         .then((response) => {
             const data = response.data;
             getTorneos(data)
@@ -130,7 +130,7 @@ export default function Torneos() {
         setUnion(e.target.value)
         console.log(e.target.value)
         axios
-        .post(`http://127.0.0.1:3001/api/rankings/`, {
+        .post(`https://limitless-mesa-98870.herokuapp.com/api/rankings/`, {
             Puntos: 0,
             TorneoID: Number(e.target.value), //el recien creado
             UsuarioID: localStorage.userID
@@ -149,7 +149,7 @@ export default function Torneos() {
     console.log(arrayTorneosDelUser)
 
     if (torneosDelUser.length === 1){
-        axios.get(`http://127.0.0.1:3001/api/participantesxtorneo/${torneosDelUser[0].TorneoID}`)
+        axios.get(`https://limitless-mesa-98870.herokuapp.com/api/participantesxtorneo/${torneosDelUser[0].TorneoID}`)
         .then((response) => {
             const data = response.data.length;
             getParticipantes(data)
@@ -221,7 +221,7 @@ export default function Torneos() {
             const enviarDatos = (event) => {
                 event.preventDefault()
                 axios
-                .post(`http://127.0.0.1:3001/api/torneos/`, {
+                .post(`https://limitless-mesa-98870.herokuapp.com/api/torneos/`, {
                   Nombre: datos.nombre,
                   FechaCreacion: localStorage.Matchday,
                   UsuarioCreador: localStorage.userID
@@ -229,7 +229,7 @@ export default function Torneos() {
                 .then((res) => {
                   const torneoID = res.data.id
                   axios
-                    .post(`http://127.0.0.1:3001/api/rankings/`, {
+                    .post(`https://limitless-mesa-98870.herokuapp.com/api/rankings/`, {
                         Puntos: 0,
                         TorneoID: torneoID, //el recien creado
                         UsuarioID: localStorage.userID
