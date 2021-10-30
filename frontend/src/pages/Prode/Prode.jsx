@@ -16,14 +16,14 @@ export default function Prode() {
   useEffect(async () => {
     setLoading(true);
     await axios
-      .get(`https://limitless-mesa-98870.herokuapp.com/api/allpartidosterminados`)
+      .get(`${process.env.REACT_APP_URL}/api/allpartidosterminados`)
       .then((res) => {
         setMatchsFinish(res.data);
       });
     await axios
-      .get(`https://limitless-mesa-98870.herokuapp.com/api/predicciones`)
+      .get(`${process.env.REACT_APP_URL}/api/predicciones`)
       .then((response) => {
-        axios.get(`https://limitless-mesa-98870.herokuapp.com/api/partidos`).then((response1) => {
+        axios.get(`${process.env.REACT_APP_URL}/api/partidos`).then((response1) => {
           const dataMatchday = response1.data.filter(
             (item) => item.Score === null
           );
@@ -66,7 +66,7 @@ export default function Prode() {
       pre.Resultado = "DRAW";
     }
     axios
-      .post("https://limitless-mesa-98870.herokuapp.com/api/predicciones", {
+      .post("${process.env.REACT_APP_URL}/api/predicciones", {
         UsuarioID: pre.UsuarioID,
         Resultado: pre.Resultado,
         PartidoID: pre.PartidoID,

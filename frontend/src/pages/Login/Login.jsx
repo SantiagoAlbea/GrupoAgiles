@@ -41,7 +41,7 @@ export default function Login() {
 
   function setMatchday() {
     axios
-      .get(`https://limitless-mesa-98870.herokuapp.com/api/partidos`)
+      .get(`${process.env.REACT_APP_URL}/api/partidos`)
       .then((response1) => {
         const dataMatchday = response1.data.filter(
           (item) => item.Score == null
@@ -62,7 +62,7 @@ export default function Login() {
       localStorage.nombre = data.get("nombre");
       axios
         .get(
-          `https://limitless-mesa-98870.herokuapp.com/api/usuarioxnombre/${localStorage.nombre}`,
+          `${process.env.REACT_APP_URL}/api/usuarioxnombre/${localStorage.nombre}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -74,7 +74,7 @@ export default function Login() {
           // si length = 0 no existe el usuario, lo creo:
           if (res.data.length === 0) {
             axios
-              .post(`https://limitless-mesa-98870.herokuapp.com/api/usuarios/`, {
+              .post(`${process.env.REACT_APP_URL}/api/usuarios/`, {
                 Nombre: `${localStorage.nombre}`,
               })
               .then((res) => {
@@ -82,7 +82,7 @@ export default function Login() {
                 localStorage.userID = id;
                 // posteo a rankings con torneo 1, puntos 0 y el id del usuario
                 axios
-                  .post(`https://limitless-mesa-98870.herokuapp.com/api/rankings/`, {
+                  .post(`${process.env.REACT_APP_URL}/api/rankings/`, {
                     Puntos: 0,
                     TorneoID: 1, //champions
                     UsuarioID: id,
