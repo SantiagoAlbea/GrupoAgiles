@@ -66,7 +66,7 @@ export default function Prode() {
       pre.Resultado = "DRAW";
     }
     axios
-      .post("${process.env.REACT_APP_URL}/api/predicciones", {
+      .post(`${process.env.REACT_APP_URL}/api/predicciones`, {
         UsuarioID: pre.UsuarioID,
         Resultado: pre.Resultado,
         PartidoID: pre.PartidoID,
